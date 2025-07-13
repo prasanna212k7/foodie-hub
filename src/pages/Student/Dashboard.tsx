@@ -338,24 +338,22 @@ const StudentDashboard: React.FC = () => {
             <div className="flex items-center space-x-4">
               <ThemeToggle />
               
-              <button
-                onClick={() => setActiveTab('cart')}
-                className="relative p-2 text-gray-600 dark:text-gray-300 hover:text-orange-500 transition-colors"
-              >
-                <ShoppingCart className="w-6 h-6" />
-                {cartItems.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    {cartItems.reduce((sum, item) => sum + item.quantity, 0)}
-                  </span>
-                )}
-              </button>
+              {/* Cart icon removed from mobile header */}
               
               <button
                 onClick={signOut}
-                className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="hidden sm:flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 <LogOut className="w-5 h-5" />
                 <span>Sign Out</span>
+              </button>
+              
+              {/* Mobile sign out - icon only */}
+              <button
+                onClick={signOut}
+                className="sm:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                <LogOut className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -375,14 +373,14 @@ const StudentDashboard: React.FC = () => {
               <button
                 key={id}
                 onClick={() => setActiveTab(id as any)}
-                className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+                className={`flex items-center justify-center sm:justify-start space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                   activeTab === id
                     ? 'border-orange-500 text-orange-600 dark:text-orange-400'
                     : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
                 }`}
               >
                 <Icon className="w-5 h-5" />
-                <span>{label}</span>
+                <span className="hidden sm:inline">{label}</span>
                 {id === 'cart' && cartItems.length > 0 && (
                   <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {cartItems.reduce((sum, item) => sum + item.quantity, 0)}
