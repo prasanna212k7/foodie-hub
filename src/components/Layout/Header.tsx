@@ -60,6 +60,17 @@ const Header: React.FC<HeaderProps> = ({ title, showCart = false, cartCount = 0,
               </button>
             )}
             
+            {/* Mobile Sign Out Button - Only for Staff */}
+            {user?.role === 'staff' && (
+              <button
+                onClick={signOut}
+                className="md:hidden p-3 text-gray-700 dark:text-gray-400 hover:text-red-500 transition-all duration-300 rounded-xl glass-morphism"
+                title="Sign Out"
+              >
+                <LogOut className="w-5 h-5" />
+              </button>
+            )}
+            
             {/* Desktop User Info */}
             <div 
               className="hidden md:flex items-center space-x-3 glass-morphism-strong rounded-xl px-4 py-3 border border-black/10 dark:border-white/15 hover-lift group"

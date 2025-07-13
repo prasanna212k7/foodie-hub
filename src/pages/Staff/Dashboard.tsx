@@ -500,13 +500,20 @@ const StaffDashboard: React.FC = () => {
                           {new Date(order.created_at).toLocaleDateString()} at{' '}
                           {new Date(order.created_at).toLocaleTimeString()}
                         </p>
+                        {/* Mobile Price - Left aligned */}
+                        <p className="text-xl font-bold gradient-text md:hidden mt-2">₹{order.total_amount}</p>
                       </div>
-                      <div className="text-right">
+                      <div className="hidden md:block text-right">
                         <p className="text-xl font-bold gradient-text">₹{order.total_amount}</p>
                         <div className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
                           {getStatusIcon(order.status)}
                           <span className="ml-1 capitalize">{order.status}</span>
                         </div>
+                      </div>
+                      {/* Mobile Status - Left aligned */}
+                      <div className={`md:hidden inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(order.status)} mt-2`}>
+                        {getStatusIcon(order.status)}
+                        <span className="ml-1 capitalize">{order.status}</span>
                       </div>
                     </div>
 
