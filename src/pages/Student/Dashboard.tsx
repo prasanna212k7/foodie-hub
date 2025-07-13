@@ -19,7 +19,8 @@ import {
   Filter,
   Trash2,
   X,
-  ChefHat
+  ChefHat,
+  Coffee
 } from 'lucide-react';
 import Toast from '../../components/Common/Toast';
 import ThemeToggle from '../../components/Common/ThemeToggle';
